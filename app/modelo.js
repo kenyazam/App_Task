@@ -34,7 +34,7 @@ class App {
         let response = new Array();
         let data = this.data;
         data.forEach(element => {
-            if (element.status == false) response.push(element)
+            if (element.status == true) response.push(element)
         });
         return response;
     }

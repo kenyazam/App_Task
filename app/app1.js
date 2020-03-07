@@ -1,4 +1,4 @@
-const app = new ToDo ();
+const app = new ToDo();
 /** vistas */
 
 const  FormNewTask =() => {
@@ -24,7 +24,7 @@ const PrintaskActive = () => {
     // Muestra tareas activas
     let container = document.getElementById("my-app");
     let row = `<div class = 'row'>`;
-    let data = app .show_active();
+    let data = app.show_active();
     data.forEach(element =>{
         row += `
         <div class = "col-sm-4 mt-2">
@@ -39,7 +39,9 @@ const PrintaskActive = () => {
                     <button type = "button" class = "btn btn-info"> 
                         Completar
                     </button>
-                    <button type = "button" class = "btn btn-danger"> 
+                    <button type = "button" 
+                    onClick=" elimina_tarea(${element.id})"
+                    class = "btn btn-danger"> 
                         Eliminar
                     </button>
                 </div>
@@ -52,7 +54,13 @@ const PrintaskActive = () => {
 
 }
 /** Funciones */
-
+function elimina_tarea(id=0){
+    let opt = confirm("desea quitar este elemento? ");
+    if (opt === true){
+        app.delete_id(id);
+        PrintaskActive();
+    }
+}
 function nueva_tarea() {
     let task = document.getElementById("task").value;
     app.new_task(task);
